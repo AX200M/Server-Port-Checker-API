@@ -10,16 +10,15 @@ IP = "65.21.130.125"
 Port = "8081"
 
 payload = {'remoteAddress': IP, 'portNumber': Port}
-r = requests.post('https://ports.yougetsignal.com/check-port.php', params=payload)
-#print(r.text)
-
-if (r.text == '<p><img src="/img/flag_red.gif" alt="Closed" style="height: 1em; width: 1em;" /> Port <a href="http://en.wikipedia.org/wiki/Port_8081" target="_blank" />8081</a> is closed on 65.21.130.125.</p>'):
-    print("Not Open")
-
-else:
-    print("Port Open")
 
 @app.get("/")
 def read_root():
-    #return {r.text}
-    return {"message":"OK"}
+    r = requests.post('https://ports.yougetsignal.com/check-port.php', params=payload)
+    #print(r.text)
+
+    if (r.text == '<p><img src="/img/flag_red.gif" alt="Closed" style="height: 1em; width: 1em;" /> Port <a href="http://en.wikipedia.org/wiki/Port_8081" target="_blank" />8081</a> is closed on 65.21.130.125.</p>'):
+        print("Not Open")
+
+    else:
+        print("Port Open")
+    return {r.text}
