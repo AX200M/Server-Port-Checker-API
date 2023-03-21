@@ -6,8 +6,8 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
-IP = "65.21.130.125"
-Port = "8081"
+IP = "ENTER SERVER IP"
+Port = "ENTER PORT YOU ARE LOOKING FOR"
 
 payload = {'remoteAddress': IP, 'portNumber': Port}
 
