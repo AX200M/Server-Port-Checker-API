@@ -21,4 +21,5 @@ else:
 
 @app.get("/")
 def read_root():
-    return {r.text}
+    #return {r.text}
+    return {"message":"OK"}
