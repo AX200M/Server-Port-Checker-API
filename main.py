@@ -17,8 +17,7 @@ def read_root():
     #print(r.text)
 
     if (r.text == '<p><img src="/img/flag_red.gif" alt="Closed" style="height: 1em; width: 1em;" /> Port <a href="http://en.wikipedia.org/wiki/Port_8081" target="_blank" />8081</a> is closed on 65.21.130.125.</p>'):
-        print("Not Open")
+        return {"message": "Port Not Open"}
 
     else:
-        print("Port Open")
-    return {r.text}
+        return {"message": "Port Open"}
