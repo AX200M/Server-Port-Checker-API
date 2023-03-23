@@ -1,23 +1,14 @@
-import main
 import requests
-from typing import Union
+from typing import Dict
 from fastapi import FastAPI
 
 app = FastAPI()
 
-
-IP = "ENTER SERVER IP"
-Port = "ENTER PORT YOU ARE LOOKING FOR"
-
-payload = {'remoteAddress': IP, 'portNumber': Port}
-
 @app.get("/")
-def read_root():
+def read_root(remoteAddress: str, portNumber: int):
+    payload = {'remoteAddress': remoteAddress, 'portNumber': portNumber}
     r = requests.post('https://ports.yougetsignal.com/check-port.php', params=payload)
-    #print(r.text)
-
-    if (r.text == '<p><img src="/img/flag_red.gif" alt="Closed" style="height: 1em; width: 1em;" /> Port <a href="http://en.wikipedia.org/wiki/Port_8081" target="_blank" />8081</a> is closed on 65.21.130.125.</p>'):
+    if "<p><img src=\"/img/flag_red.gif\" alt=\"Closed\" style=\"height: 1em; width: 1em;\" />" in r.text:
         return {"message": "Server Is Offline"}
-
     else:
         return {"message": "Server Is Online"}
