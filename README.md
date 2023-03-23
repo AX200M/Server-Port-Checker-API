@@ -30,7 +30,7 @@ Within the **Build Command** place
 ```
     pip install uvicorn requests fastapi
 ```
-and within the **Start Command** place
+and within the **Start Command** place (be sure to change 'main' with the version u are using e.g uvicorn setipandport:app --host 0.0.0.0)
 ```
     uvicorn main:app --host 0.0.0.0
 ```
